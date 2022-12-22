@@ -10,6 +10,9 @@ Use the search bar to genertate cocktail recipes by matching name or ingredient 
 
 
 ### RESTful CRUD Api<img width="503" alt="Screen Shot 2022-12-22 at 4 58 30 PM" src="https://user-images.githubusercontent.com/115594817/209239747-75376ddb-e5ee-4a37-b85e-060e90078901.png">
+### RESTful CRUD Api 
+
+<img width="554" alt="RESTful CRUD API" src="https://user-images.githubusercontent.com/115594817/209220703-2ca5b570-79be-4595-9f64-827d7ca70ea1.png">
 
 
 
