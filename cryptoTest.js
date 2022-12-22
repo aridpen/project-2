@@ -2,18 +2,18 @@
 // you must know what the key is to decrypt or unscramble the data
 
 //use crypto-js for encryption
-// const mySecret = "I eat cookies for breakfast"
+const mySecret = "I eat cookies for breakfast"
 
-// const secretKey = 'myPassword'
+const secretKey = 'myPassword'
 
-// //advanced encryption standard algo
-// const crypto = require('crypto-js')
+//advanced encryption standard algo
+const crypto = require('crypto-js')
 
-// const myEncryption = crypto.AES.encrypt(String(100), secretKey)
-// console.log(myEncryption.toString())//lets see our encrypted data
+const myEncryption = crypto.AES.encrypt(String(100), secretKey)
+console.log(myEncryption.toString())//lets see our encrypted data
 
-// const decrypt = crypto.AES.decrypt(myEncryption.toString(), secretKey)
-// console.log(decrypt.toString(crypto.enc.Utf8))
+const decrypt = crypto.AES.decrypt(myEncryption.toString(), secretKey)
+console.log(decrypt.toString(crypto.enc.Utf8))
 
 //passwords in the database will be hashed
 //hasing is a one way process, once data has been hased you cannont unhash it
