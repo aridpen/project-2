@@ -9,7 +9,8 @@ No need to fumble through sites or apps to find the perfect drinks for your next
 Use the search bar to genertate cocktail recipes by matching name or ingredient key words. (e.g. bloody will match bloody mary and bloody margarita). Every search returns drinks containing those key words, as well as all the recipes and instructions to make the drink yourself. Seperate words with commas to search multiple keywords. Don't want to forget these Cocktails in the future? Create a login to save mixes to your favorites!
 
 
-### RESTful CRUD Api<img width="542" alt="updatedRESTfulApi" src="https://user-images.githubusercontent.com/115594817/209237069-85b68707-986c-4726-8516-d95d518506a0.png">
+### RESTful CRUD Api<img width="503" alt="Screen Shot 2022-12-22 at 4 58 30 PM" src="https://user-images.githubusercontent.com/115594817/209239747-75376ddb-e5ee-4a37-b85e-060e90078901.png">
+
 
 
 ### ERD Model Relations![UpdatedERD](https://user-images.githubusercontent.com/115594817/209237007-45520309-1af5-49a8-873a-77e72031167d.png)
