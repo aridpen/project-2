@@ -4,6 +4,8 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 const db = require('./models')
 const crypto = require('crypto-js')
+const axios = require('axios')
+const router = express.Router()
 
 // app config
 const app = express()
@@ -62,8 +64,10 @@ app.get('/', (req, res) => {
 })
 
 app.use('/users', require('./controllers/users'))
+app.use('/cocktails', require('./controllers/cocktails'))
 
 // listen on a port
 app.listen(PORT, () => {
     console.log(`authenticating users on PORT ${PORT} 🔐`)
 })
+module.exports = router
