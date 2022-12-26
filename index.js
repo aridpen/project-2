@@ -5,10 +5,10 @@ const cookieParser = require('cookie-parser')
 const db = require('./models')
 const crypto = require('crypto-js')
 const axios = require('axios')
-const router = express.Router()
 
-// app config
+// instance of express
 const app = express()
+const router = express.Router()
 const PORT = process.env.PORT || 8000
 app.set('view engine', 'ejs')
 // parse request bodies from html forms
@@ -57,7 +57,7 @@ app.use((req, res, next) => {
 
 // routes and controllers
 app.get('/', (req, res) => {
-    console.log(res.locals.user)
+    // console.log(res.locals.user)
     res.render('home.ejs', {
         user: res.locals.user
     })
