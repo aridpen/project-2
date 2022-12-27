@@ -10,12 +10,20 @@ router.get('/search', (req, res) => {
     user: res.locals.user
   })
 })
-   
+// GET localhost:8000/cocktails/favorite
 router.get('/favorites', (req, res) => {
   res.render('cocktails/favorites.ejs', {
     user: res.locals.user
   })
+})
+   
+// GET localhost:8000/cocktails/comments
+router.get('/comments', (req, res) => {
+  res.render('cocktails/comments.ejs', {
+    user: res.locals.user
+  })
    })
+
 
 // GET localhost:8000/cocktails/search
 router.post('/search', async (req, res) => {

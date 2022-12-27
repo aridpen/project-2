@@ -6,6 +6,8 @@ const axios = require('axios')
 
 
 //GET localhost:8000/cocktails/comments
-router.get
+router.get('/comments', (req, res)=> {
+    res.render('cocktails/comments.ejs')
+})
 
 module.exports = router

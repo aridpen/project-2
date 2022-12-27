@@ -4,4 +4,6 @@ sequelize model:create --name user --attributes firstName:string,lastName:string
 
 sequelize model:create --name cocktail --attributes name:string,ingredients:string,instructions:text
 
-sequelize model:create --name comment --attributes u:string,type:string
+sequelize model:create --name comment --attributes comment:string,userId:integer,cocktailId:integer
+
+sequelize model:create --name user_cocktails --attributes userId:integer,cocktailId:integer
