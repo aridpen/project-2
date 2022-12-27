@@ -1,0 +1,7 @@
+sequelize model:create --name (name of the table singular) --attributes colName:dataType,colName:dataType
+
+sequelize model:create --name user --attributes firstName:string,lastName:string,age:integer,email:string
+
+sequelize model:create --name cocktail --attributes name:string,ingredients:string,instructions:text
+
+sequelize model:create --name comment --attributes u:string,type:string

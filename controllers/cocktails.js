@@ -9,10 +9,15 @@ router.get('/search', (req, res) => {
   res.render('cocktails/search.ejs', {
     user: res.locals.user
   })
+})
+   
+router.get('/favorites', (req, res) => {
+  res.render('cocktails/favorites.ejs', {
+    user: res.locals.user
+  })
    })
 
-
-// GET localhost:8000/cocktails/search/:search
+// GET localhost:8000/cocktails/search
 router.post('/search', async (req, res) => {
   const search = req.body.search;
   console.log(search);
@@ -24,13 +29,35 @@ router.post('/search', async (req, res) => {
         }
       });
       let result = await response.data
+      console.log(result[0]);
       res.render('cocktails/results.ejs', { results: result });
 
     } catch (error) {
       console.error(error);
     }
-  });
+});
 
+
+ 
+//POST localhost:8000/cocktails/favorite
+// router.post('/favorites', async (req, res) => {
+//   //code to handle to favorite button goes here
+//   const search = req.body.search
+//   const url = `https://api.api-ninjas.com/v1/cocktail?name=${search}&$or=ingredient=${search}`;
+//   try {
+//     const response = await axios.post(url, {
+//       headers: {
+//     'x-api-key': process.env.API_KEY
+//   }
+//     })
+//     let favorite = await response.data
+//     console.log(favorite);
+//     res.render('cocktails/favorites.ejs', {favorites: favorite})
+//   } catch (error) {
+//     console.error(error)
+//   }
+// })
+// res.redirect(req.get('referer'))
 
 module.exports = router
 

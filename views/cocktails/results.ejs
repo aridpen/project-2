@@ -3,19 +3,16 @@
 <%-include('../partials/form.ejs') %>
 
 <% results.forEach(result =>{%>
-   <h2> <%=result.name%> <button type="button" class="btn btn-primary btn-sm">Favorite</button> </h2>
+   <h2> <%=result.name%> <button type="button" id="btn "class="btn btn-primary btn-sm">Favorite</button> </h2>
 
-<ul class="list-group">
+<ul>
    <%result.ingredients.forEach(ingredient=>{ %>
-<li class="list-group-item">
+<li >
    <%=ingredient%>
 </li>
 
    <%})%>
 </ul>
-
-
-
    <p> Instructions: <%=result.instructions%></p>
 
     
