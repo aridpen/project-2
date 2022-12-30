@@ -4,19 +4,41 @@ const db = require('../models')
 const router = express.Router()
 const axios = require('axios')
 
+
+
 // GET localhost:8000/cocktails/search
 router.get('/search', (req, res) => {
   res.render('cocktails/search.ejs', {
     user: res.locals.user
   })
 })
-// GET localhost:8000/cocktails/favorite
+
 router.get('/favorites', (req, res) => {
   res.render('cocktails/favorites.ejs', {
     user: res.locals.user
   })
-})
-   
+}) 
+
+// POST localhost:8000/cocktails/favorites
+// POST /pokemon - receive the name of a pokemon and add it to the database
+router.post('/favorites', async (req, res) => {
+  // TODO: Get form data and add a new record to DB
+  try {
+    // create a new fave in the db
+    await db.cocktail.findOrCreate({
+      where: {
+        name: req.body.name
+      }
+    })
+    // redirect to /faves to show the user their faves
+  } catch (err) {
+    console.log(err)
+    console.error(err)
+  } 
+  res.redirect('cocktails/favorites.ejs')
+ 
+
+});
 // GET localhost:8000/cocktails/comments
 router.get('/comments', (req, res) => {
   res.render('cocktails/comments.ejs', {
@@ -28,7 +50,7 @@ router.get('/comments', (req, res) => {
 // GET localhost:8000/cocktails/search
 router.post('/search', async (req, res) => {
   const search = req.body.search;
-  console.log(search);
+  // console.log(search);
     const url = `https://api.api-ninjas.com/v1/cocktail?name=${search}&$or=ingredient=${search}`;
     try {
       const response = await axios.get(url, {
@@ -37,7 +59,7 @@ router.post('/search', async (req, res) => {
         }
       });
       let result = await response.data
-      console.log(result[0]);
+      // console.log(result[0]);
       res.render('cocktails/results.ejs', { results: result });
 
     } catch (error) {
@@ -46,7 +68,7 @@ router.post('/search', async (req, res) => {
 });
 
 
- 
+//GET localhost:8000/
 //POST localhost:8000/cocktails/favorite
 // router.post('/favorites', async (req, res) => {
 //   //code to handle to favorite button goes here

@@ -3,8 +3,10 @@
 <%-include('../partials/form.ejs') %>
 
 <% results.forEach(result =>{%>
-   <h2> <%=result.name%> <button type="button" id="btn "class="btn btn-primary btn-sm">Favorite</button> </h2>
-
+   <h2><%= result.name %></h2>
+   <form method="POST" action="/cocktails/favorites">
+           <button class="btn btn-primary" type="submit">Favorite🍸</button>
+    </form>
 <ul>
    <%result.ingredients.forEach(ingredient=>{ %>
 <li >
