@@ -1,11 +1,10 @@
-<%-include('../partials/results.ejs', {user}) %>
-<%-include('../partials/form.ejs') %> <% results.forEach(result =>{%>
+<%-include('../partials/results.ejs', {user}) %> <% results.forEach(result =>{%>
 <h2><%= result.name %></h2>
 <form action="favorites" method="post">
   <input type="hidden" name="name" value="<%= result.name %>" />
   <input type="hidden" name="ingredients" value="<%= result.ingredients %>" />
   <input type="hidden" name="instructions" value="<%= result.instructions %>" />
-  <button type="submit">Favorite</button>
+  <button type="submit" class="btn btn-warning">Favorite 🥃🍸</button>
 </form>
 <!-- <script>
   document.addEventListener("DOMContentLoaded", function () {

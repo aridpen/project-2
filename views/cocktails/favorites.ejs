@@ -1,13 +1,21 @@
 <%- include('../partials/favorites.ejs', {user}) %> <% if (favorites.length > 0)
-{ %>
+{ %> <% for (const favorite of favorites) { %>
+<h2>
+  <%= favorite.name %>
+  <form action="/favorites/<%=favorite.id%>/?_method=DELETE" method="POST">
+    <button type="submit">Delete</button>
+  </form>
+</h2>
+
 <ul>
-  <% for (const favorite of favorites) { %>
-  <li><%= favorite.name %></li>
-  <li><%=favorite.ingredients%></li>
-  <li><%=favorite.instructions%></li>
-  <% } %>
+  <%favorite.ingredients.split(',').forEach(ingredient =>{%>
+  <li><%=ingredient%></li>
+  <%})%>
 </ul>
-<% } else { %>
+<p>Instructions: <%=favorite.instructions%></p>
+<button type="button" class="btn btn-warning">Leave a Comment</button>
+
+<% } %> <% } else { %>
 <p>No favorites yet</p>
 
 <%}%> <%-include('../partials/footer.ejs') %>

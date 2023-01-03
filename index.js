@@ -6,6 +6,7 @@ const db = require("./models");
 const crypto = require("crypto-js");
 const axios = require("axios");
 const path = require("path");
+const methodOverride = require("method-override");
 
 // instance of express
 const app = express();
@@ -15,7 +16,7 @@ app.set("view engine", "ejs");
 // parse request bodies from html forms
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
-
+app.use(methodOverride("_method"));
 // app.use(express.static(path.join(__dirname, "src")));
 
 // app.get("/", (req, res) => {
@@ -60,7 +61,7 @@ app.use(async (req, res, next) => {
 app.use((req, res, next) => {
   // our code goes here
   // console.log('hello from inside of the middleware!')
-  console.log(`incoming request: ${req.method} - ${req.url}`);
+  // console.log(`incoming request: ${req.method} - ${req.url}`);
   // res.locals are a place that we can put data to share with 'downstream routes'
   // res.locals.myData = 'hello I am data'
   // invoke next to tell express to go to the next route or middle

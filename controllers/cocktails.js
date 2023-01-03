@@ -45,30 +45,6 @@ router.post("/search", async (req, res) => {
   }
 });
 
-// GET localhost:8000/cocktails/favorites see all favorited cocktails
-router.get("/favorites", async (req, res) => {
-  try {
-    const favorites = await db.cocktail.findAll();
-    res.render("cocktails/favorites.ejs", { favorites });
-  } catch (err) {
-    console.log(err);
-  }
-});
-
-router.get("/favorites", async (req, res) => {
-  try {
-    // Find the user by their id
-    const user = await db.user.findByPk(res.locals.user.id);
-
-    // Find all the cocktails that have been favorited by the user
-    const favorites = await user.getFavorites();
-
-    // Render a template or send a JSON response with the list of favorites
-    res.render("cocktails/favorites.ejs", { favorites });
-  } catch (err) {
-    console.log(err);
-  }
-});
 // POST localhost:8000/cocktails/favorites POST favorited cocktail by user into db
 router.post("/favorites", async (req, res) => {
   try {
@@ -81,6 +57,44 @@ router.post("/favorites", async (req, res) => {
       },
     });
     res.redirect(req.get("referer"));
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// GET localhost:8000/cocktails/favorites see all favorited cocktails
+router.get("/favorites", async (req, res) => {
+  try {
+    const favorites = await db.cocktail.findAll();
+    // console.log("\n" + favorites[0].dataValues.ingredients + "\n");
+    let ingredients = favorites[0].dataValues.ingredients;
+
+    // console.log(ingredients.split(","));
+    res.render("cocktails/favorites.ejs", { favorites });
+  } catch (err) {
+    console.log(err);
+  }
+});
+router.get("/favorites/:id", async (req, res) => {
+  try {
+    const favorites = await db.cocktail.findByPk(req.params.id);
+    res.render("cocktails/favorites.ejs", { favorites });
+    console.log(favorites);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// DELETE localhost:8000/cocktails/favorites/:id delete a favorited cocktail by user
+router.delete("/favorites/:id", async (req, res) => {
+  try {
+    const deletefavorite = await db.cocktail.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    // console.log(deletefavorite);
+    res.redirect("cocktails/favorites.ejs");
   } catch (err) {
     console.log(err);
   }
