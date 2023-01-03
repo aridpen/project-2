@@ -1,6 +1,12 @@
-<form class="form-control w-50" action="/cocktails/search" method="POST">
-    <label class="form-label" for="search">Search for a cocktail:</label><br>
-    <input class="form-control" type="text" id="search" name="search"><br>
-    <button class="btn btn-primary" type="submit" value="Submit">Submit</button>
-  </form>
- 
+<form action="/cocktails/search" method="POST">
+  <label class="form-label" for="search"></label><br />
+  <input
+    type="text"
+    id="search"
+    name="search"
+    placeholder="Enter Ingredient Here"
+  /><br />
+  <button class="btn btn-warning btn-md" type="submit" value="Submit">
+    Search
+  </button>
+</form>

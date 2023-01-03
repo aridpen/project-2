@@ -67,21 +67,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.get("/", (req, res) => {
-//   res.send(`
-//       <html>
-//         <head>
-//           <link rel="stylesheet" href="/styles.css">
-//         </head>
-//         <body>
-//           <div class="bg-gray-400 text-gray-800 p-4">
-//             <h1 class="text-2xl font-bold">Hello, World!</h1>
-//           </div>
-//         </body>
-//       </html>
-//     `);
-// });
-
 // routes and controllers
 app.get("/", (req, res) => {
   // console.log(res.locals.user)

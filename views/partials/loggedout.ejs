@@ -29,9 +29,9 @@
             <!-- made items inline -->
         <ul class="navbar-nav">
           <!-- show home wheather the user is logged in or not -->
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="/">Home</a>
-          </li>
+          </li> -->
           <% if (user) {%>
           <!-- show this if logged in -->
           <li class="nav-item">
@@ -49,15 +49,25 @@
 
           <%}else{%>
           <!-- show these if user not logged in -->
-          <li class="nav-item">
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="/users/login">Login</a>
+          </li> -->
+          <form action="/users/login" method="POST">
+            <label for="email">Email:</label>
+            <input placeholder="Email" type="email" name="email" id="email">
+            
+            <label for="password">Password:</label>
+            <input placeholder="password" type="password" name="password" id="password">
+            
+            <button type="submit">Login</button>
+            </form>
+          <!-- <li class="nav-item">
             <a class="nav-link" href="/users/new">Sign Up</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/users/login">Login</a>
-          </li>
+         
           <li class="nav-item">
             <a class="nav-link" href="/cocktails/search">Search</a>
-          </li>
+          </li> -->
 
           <% }%>
         </ul>
@@ -72,7 +82,6 @@
           <div>
             <h1><span class="text-warning">Welcome to...</span><img src="/img/logo.jpg" alt="wickedcocktails logo" style="width: 400px; height: 300px;"></h1>
          
-            <!-- <button href="/users/new" class="btn btn-primary btn-sm">Sign Up</button> -->
           </div>
           <img class="img-fluid w-50 d-none d-sm-block px-5 p-lg-0 pt-5"  src="/img/showcase.jpg" alt="cocktails">
         </div>
@@ -86,13 +95,25 @@
           <p class="lead my-10 ">
             Tired of the same old drinks? Shake things up with our interactive cocktail generator! Simply type in a few keywords and we'll surprise you with a delicious, unique recipe. Give it a try and discover your new favorite drink!
           </p>
-         
+        
+
+          <form action="/users" method="POST">
+          <label for="email">Email:</label>
+          <input type="email" name="email" id="email" required>
+          
+          <label for="password">Password:</label>
+          <input type="password" name="password" id="password" required>
+          
+          <button type="submit">Sign Up</button>
+          </form>
+          
+          <!-- <%-include('../partials/form.ejs') %> -->
         </div>
       </div>
     </section>
 
     <!-- BOXES -->
-    <section class="p-5">
+    <!-- <section class="p-5">
       <div class="container">
         <div class="row text-center g-4">
           <div class="col-md">
@@ -102,10 +123,9 @@
                 <img src="/img/neoncocktail.jpg" style="width: 100px; height: 100px;">
             </div>
             <h3 class="card-title mb-3">Search</h3>
-              <p class="card-text"> Welcome back! If you're looking for a specific cocktail, try searching for key words such as the ingredients or the name of the cocktail you're interested in. Also, don't forget to check out your favorites. Cheers!         
-                <%- include('../partials/form.ejs') %>
+              <p class="card-text">Lorem ipsum dolor, sit amet consectetur\
                 </p>
-                <!-- <a href="#" class="btn btn-warning">Search</a> -->
+                <a href="#" class="btn btn-warning">Search</a>
             </div>    
           </div>
         </div>
@@ -137,7 +157,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- INFO SECTIONS -->
     <section id="learn" class="p-5">
@@ -150,25 +170,8 @@
           <h2>Fun Fact:</h2>
           <p class="lead">
             the word "cocktail" is thought to have originated in the United States in the early 19th century. The first known use of the word was in a newspaper in New York City in 1806, where it was described as a "mingling of spirits." One theory about the origin of the word is that it comes from the French coquetier, which means "egg cup." This theory suggests that the original cocktails were served in small, egg-shaped cups. Another theory is that the word comes from the fact that cocktails were originally served with a rooster's tail feather as a garnish, and the word "cocktail" is a combination of the words "cock" (meaning rooster) and "tail."
-          <!-- </p>
-          <p>Sign up for MORE fun facts, AND great Reciepes!!!</p> -->
+          </p>
+          <p>Sign up for MORE fun facts, AND great Reciepes!!!</p>
         </div>
       </div>
     </section>
-<!-- 
-    <section id="learn" class="p-5 bg-dark text-light">
-      <div class="container">
-        <div class="row align-items-center justify-content-between">
-        <div class="col-md p-5">
-          <h2>Fun Fact:</h2>
-          <p class="lead">
-            the word "cocktail" is thought to have originated in the United States in the early 19th century. The first known use of the word was in a newspaper in New York City in 1806, where it was described as a "mingling of spirits." One theory about the origin of the word is that it comes from the French coquetier, which means "egg cup." This theory suggests that the original cocktails were served in small, egg-shaped cups. Another theory is that the word comes from the fact that cocktails were originally served with a rooster's tail feather as a garnish, and the word "cocktail" is a combination of the words "cock" (meaning rooster) and "tail."
-          </p>
-          <p>Sign up for MORE fun facts, AND great Reciepes!!!</p>
-          <div class="col-md">
-            <img src="/img/facts.jpg" style="width: 400px; height: 400px;" class="img-fluid" alt="two cocktails">
-          </div>
-        </div>
-      </div>
-    </section> -->
-

@@ -1,24 +1,30 @@
-<%-include('../partials/header.ejs', {user}) %>
+<%-include('../partials/results.ejs', {user}) %>
+<%-include('../partials/form.ejs') %> <% results.forEach(result =>{%>
+<h2><%= result.name %></h2>
+<form action="favorites" method="post">
+  <input type="hidden" name="name" value="<%= result.name %>" />
+  <input type="hidden" name="ingredients" value="<%= result.ingredients %>" />
+  <input type="hidden" name="instructions" value="<%= result.instructions %>" />
+  <button type="submit">Favorite</button>
+</form>
+<!-- <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var favoriteButton = document.getElementById("favorite-button");
+    favoriteButton.addEventListener("click", function () {
+      // Find the parent element of the button (in this case, it's the form element)
+      var parent = this.parentElement;
+      // Remove the parent element from the page
+      parent.parentElement.removeChild(parent);
+    });
+  });
+</script> -->
 
-<%-include('../partials/form.ejs') %>
-
-<% results.forEach(result =>{%>
-   <h2><%= result.name %></h2>
-   <form method="POST" action="/cocktails/favorites">
-           <button class="btn btn-primary" type="submit">Favorite🍸</button>
-    </form>
 <ul>
-   <%result.ingredients.forEach(ingredient=>{ %>
-<li >
-   <%=ingredient%>
-</li>
+  <%result.ingredients.forEach(ingredient=>{ %>
+  <li><%=ingredient%></li>
 
-   <%})%>
+  <%})%>
 </ul>
-   <p> Instructions: <%=result.instructions%></p>
+<p>Instructions: <%=result.instructions%></p>
 
-    
-<%})%>
-
-
-<%- include('../partials/footer.ejs') %>
+<%})%> <%- include('../partials/footer.ejs') %>

@@ -1,6 +1,13 @@
-<%- include('../partials/header.ejs', {user}) %>
-<h1>Your Wicked Cocktails Favorites</h1>
+<%- include('../partials/favorites.ejs', {user}) %> <% if (favorites.length > 0)
+{ %>
+<ul>
+  <% for (const favorite of favorites) { %>
+  <li><%= favorite.name %></li>
+  <li><%=favorite.ingredients%></li>
+  <li><%=favorite.instructions%></li>
+  <% } %>
+</ul>
+<% } else { %>
+<p>No favorites yet</p>
 
-
-
-<%- include('../partials/footer.ejs') %>
+<%}%> <%-include('../partials/footer.ejs') %>

@@ -29,23 +29,23 @@
             <!-- made items inline -->
         <ul class="navbar-nav">
           <!-- show home wheather the user is logged in or not -->
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="/">Home</a>
-          </li>
+          </li> -->
           <% if (user) {%>
           <!-- show this if logged in -->
           <li class="nav-item">
-            <a class="nav-link" href="/users/profile">Profile</a>
+            <a class="nav-link" href="/users/profile">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/users/logout">Logout</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="/cocktails/search">Search</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/cocktails/favorites">Favorites</a>
-          </li>
+          </li> -->
 
           <%}else{%>
           <!-- show these if user not logged in -->
@@ -64,29 +64,13 @@
       </div>
     </nav>
 
-    <!-- SHOWCASE -->
-
-    <section class="bg-dark text-light py-5 text-center text-sm-start">
-      <div class="container">
-        <div class="d-sm-flex align-items-center justify-content-between">
-          <div>
-            <h1><span class="text-warning">Welcome to...</span><img src="/img/logo.jpg" alt="wickedcocktails logo" style="width: 400px; height: 300px;"></h1>
-         
-            <!-- <button href="/users/new" class="btn btn-primary btn-sm">Sign Up</button> -->
-          </div>
-          <img class="img-fluid w-50 d-none d-sm-block px-5 p-lg-0 pt-5"  src="/img/showcase.jpg" alt="cocktails">
-        </div>
-      </div>
-    </section>
-
     <!-- SEARCH BAR -->
     <section class="bg-secondary text-light p-5">
       <div class="container">
         <div class="d-md-flex justify-content-between align-items-center">
           <p class="lead my-10 ">
-            Tired of the same old drinks? Shake things up with our interactive cocktail generator! Simply type in a few keywords and we'll surprise you with a delicious, unique recipe. Give it a try and discover your new favorite drink!
-          </p>
-         
+            </p>
+        
         </div>
       </div>
     </section>
@@ -99,7 +83,7 @@
           <div class="card bg-dark text-light">
             <div class="card-body text-center">
               <div class="h1 mb-3" >
-                <img src="/img/neoncocktail.jpg" style="width: 100px; height: 100px;">
+                <img src="/img/search3.jpg" style="max-width: 100%">
             </div>
             <h3 class="card-title mb-3">Search</h3>
               <p class="card-text"> Welcome back! If you're looking for a specific cocktail, try searching for key words such as the ingredients or the name of the cocktail you're interested in. Also, don't forget to check out your favorites. Cheers!         
@@ -113,7 +97,7 @@
             <div class="card bg-secondary text-light">
               <div class="card-body text-center">
                 <div class="h1 mb-3" >
-                <i class="bi bi-chat-left-text-fill"></i>
+                  <img src="/img/search4.jpg" style="max-width: 100%">
               </div>
               <h3 class="card-title mb-3">Comments</h3>
                 <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni ex ea maxime eum voluptatibus ullam error velit, sapiente doloru
@@ -126,49 +110,15 @@
             <div class="card bg-dark text-light">
               <div class="card-body text-center">
                 <div class="h1 mb-3" >
-                <i class="bi bi-heart-fill"></i>
+                  <img src="/img/search2.jpg" style="max-width: 100%">
               </div>
               <h3 class="card-title mb-3">Favorites</h3>
-                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni ex ea maxime eum voluptatibus ullam error velit, sapiente doloru
+                <p class="card-text">Hey there! If you're trying to find the cocktail recipe you saved earlier, click here to access your favorites page to see all cocktails saved in the past!
                   </p>
-                  <a href="#" class="btn btn-warning">Favorites</a>
+                  <a href="/cocktails/favorites" class="btn btn-warning">Favorites</a>
               </div>    
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- INFO SECTIONS -->
-    <section id="learn" class="p-5">
-      <div class="container">
-        <div class="row align-items-center justify-content-between">
-          <div class="col-md">
-          <img src="/img/moscowmule.jpg" style="width: 700px; height: 700px;" class="img-fluid" alt="two cocktails">
-        </div>
-        <div class="col-md p-5">
-          <h2>Fun Fact:</h2>
-          <p class="lead">
-            the word "cocktail" is thought to have originated in the United States in the early 19th century. The first known use of the word was in a newspaper in New York City in 1806, where it was described as a "mingling of spirits." One theory about the origin of the word is that it comes from the French coquetier, which means "egg cup." This theory suggests that the original cocktails were served in small, egg-shaped cups. Another theory is that the word comes from the fact that cocktails were originally served with a rooster's tail feather as a garnish, and the word "cocktail" is a combination of the words "cock" (meaning rooster) and "tail."
-          <!-- </p>
-          <p>Sign up for MORE fun facts, AND great Reciepes!!!</p> -->
-        </div>
-      </div>
-    </section>
-<!-- 
-    <section id="learn" class="p-5 bg-dark text-light">
-      <div class="container">
-        <div class="row align-items-center justify-content-between">
-        <div class="col-md p-5">
-          <h2>Fun Fact:</h2>
-          <p class="lead">
-            the word "cocktail" is thought to have originated in the United States in the early 19th century. The first known use of the word was in a newspaper in New York City in 1806, where it was described as a "mingling of spirits." One theory about the origin of the word is that it comes from the French coquetier, which means "egg cup." This theory suggests that the original cocktails were served in small, egg-shaped cups. Another theory is that the word comes from the fact that cocktails were originally served with a rooster's tail feather as a garnish, and the word "cocktail" is a combination of the words "cock" (meaning rooster) and "tail."
-          </p>
-          <p>Sign up for MORE fun facts, AND great Reciepes!!!</p>
-          <div class="col-md">
-            <img src="/img/facts.jpg" style="width: 400px; height: 400px;" class="img-fluid" alt="two cocktails">
-          </div>
-        </div>
-      </div>
-    </section> -->
-

@@ -1,5 +1,4 @@
-<%-include('../partials/header.ejs', {user}) %>
+<h3>Hey, <%= user.email %>!</h3>
 
-<h3> Hey, <%= user.email %> thanks for logging in to the app! %></h3>
-
+<%-include('../partials/loggedin.ejs', {user}) %>
 <%-include('../partials/footer.ejs') %>
