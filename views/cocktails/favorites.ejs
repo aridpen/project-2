@@ -18,14 +18,18 @@
   <%})%>
 </ul>
 <p>Instructions: <%=favorite.instructions%></p>
-
-
 <%favorite.comments.forEach(comment => {%> 
     
   <p><%= comment.dataValues.comment%></p> 
   
   <%})%> 
-
+  <form method="post" action="/cocktails/favorites/comments">
+    <label for="comment">Comment:</label><br />
+    <textarea id="comment" name="comment"></textarea><br />
+    <input type="hidden" name="cocktailId" value="<%= favorite.id %>" />
+    <input type="submit" value="Submit" />
+  </form>
+   
 <%}%> 
 
 
