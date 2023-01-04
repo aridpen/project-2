@@ -3,7 +3,10 @@ const express = require("express");
 const db = require("../models");
 const router = express.Router();
 const axios = require("axios");
+const methodOverride = require("method-override");
+const app = express()
 
+app.use(methodOverride("_method"));
 // GET localhost:8000/cocktails/search
 router.get("/search", (req, res) => {
   res.render("cocktails/search.ejs", {
@@ -65,7 +68,15 @@ router.post("/favorites", async (req, res) => {
 // GET localhost:8000/cocktails/favorites see all favorited cocktails
 router.get("/favorites", async (req, res) => {
   try {
-    const favorites = await db.cocktail.findAll();
+    const favorites = await db.cocktail.findAll({
+      include: [
+        {
+          model: db.comment,
+          as: "comments",
+        },
+      ],
+    });
+    // console.log(favorites[0].comments[0].dataValues.comment);
     // console.log("\n" + favorites[0].dataValues.ingredients + "\n");
     let ingredients = favorites[0].dataValues.ingredients;
 
@@ -75,11 +86,29 @@ router.get("/favorites", async (req, res) => {
     console.log(err);
   }
 });
-router.get("/favorites/:id", async (req, res) => {
+
+router.get("/comments", (req, res) => {
+  res.render("cocktails/comments.ejs", {
+    user: res.locals.user,
+  });
+});
+
+router.post("/favorites/comments", async (req, res) => {
   try {
-    const favorites = await db.cocktail.findByPk(req.params.id);
-    res.render("cocktails/favorites.ejs", { favorites });
-    console.log(favorites);
+    // Validate the input
+    if (!req.body.comment || !req.body.cocktailId) {
+      // If any required fields are missing, return an error
+      res.status(400).send({ error: "Comment and cocktail ID are required." });
+      return;
+    }
+
+    // Save the comment to the database
+    const comment = await db.comment.create({
+      comment: req.body.comment,
+      userId: res.locals.user.id,
+      cocktailId: req.body.cocktailId,
+    });
+    res.redirect(req.get("referer"));
   } catch (err) {
     console.log(err);
   }
@@ -88,18 +117,28 @@ router.get("/favorites/:id", async (req, res) => {
 // DELETE localhost:8000/cocktails/favorites/:id delete a favorited cocktail by user
 router.delete("/favorites/:id", async (req, res) => {
   try {
-    const deletefavorite = await db.cocktail.destroy({
+    console.log(req.params.id);
+    const favorite = await db.cocktail.destroy({
       where: {
         id: req.params.id,
       },
     });
     // console.log(deletefavorite);
-    res.redirect("cocktails/favorites.ejs");
+    res.redirect(req.get("referer"));
   } catch (err) {
     console.log(err);
   }
 });
 
+// router.get("/favorites/:id", async (req, res) => {
+//   try {
+//     const favorites = await db.cocktail.findByPk(req.params.id);
+//     res.render("cocktails/favorites.ejs", { favorites });
+//     console.log(favorites);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 //SECOND ATTEMPT START
 // router.get("/favorites", async (req, res) => {
 //   try {

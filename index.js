@@ -1,22 +1,28 @@
 // required packages
-require("dotenv").config();
 const express = require("express");
+const app = express();
+const methodOverride = require("method-override");
+app.use(methodOverride("_method"));
+
+
+require("dotenv").config()
+
 const cookieParser = require("cookie-parser");
 const db = require("./models");
 const crypto = require("crypto-js");
 const axios = require("axios");
 const path = require("path");
-const methodOverride = require("method-override");
+
 
 // instance of express
-const app = express();
+
 const router = express.Router();
 const PORT = process.env.PORT || 8000;
 app.set("view engine", "ejs");
 // parse request bodies from html forms
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
-app.use(methodOverride("_method"));
+
 // app.use(express.static(path.join(__dirname, "src")));
 
 // app.get("/", (req, res) => {
@@ -78,6 +84,7 @@ app.get("/", (req, res) => {
 
 app.use("/users", require("./controllers/users"));
 app.use("/cocktails", require("./controllers/cocktails"));
+app.use("/comments", require("./controllers/comments"));
 
 // listen on a port
 app.listen(PORT, () => {
