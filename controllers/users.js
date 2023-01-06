@@ -110,5 +110,34 @@ router.get('/profile', (req, res) => {
     }
 })
 
+
+//GET /users/profile/edit -- show a page where user can edit their profile creds.
+router.get('/edit', (req, res) => {
+    res.render('users/edit.ejs', {
+        user: res.locals.user
+    })
+})
+
+router.post('/edit', async (req, res) => {
+    try {
+        //look for user in the database
+        const userUpdate = await db.user.findByPk(res.locals.user.id)
+        //retrieve user info from the form
+        email = req.body.email
+        password = bcrypt.hashSync(req.body.password, 12)
+   //updated user creds gets saved to the db
+        await userUpdate.save()
+        res.redirect('/users/profile')
+        
+        
+    } catch (err) {
+        console.log(err)
+        res.status(500).send('server error')
+    }
+        
+    })
+    
+    // res.send('profile update')
+
 // export the router
 module.exports = router

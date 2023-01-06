@@ -3,10 +3,13 @@ const express = require("express");
 const db = require("../models");
 const router = express.Router();
 const axios = require("axios");
-const methodOverride = require("method-override");
-const app = express()
+// const methodOverride = require("method-override");
+// const app = express()
 
-app.use(methodOverride("_method"));
+// app.use(methodOverride("_method"));
+
+
+
 // GET localhost:8000/cocktails/search
 router.get("/search", (req, res) => {
   res.render("cocktails/search.ejs", {
@@ -20,6 +23,7 @@ router.post("/search", async (req, res) => {
   // console.log(search);
   const url = `https://api.api-ninjas.com/v1/cocktail?name=${search}&$or=ingredient=${search}`;
   try {
+    
     const response = await axios.get(url, {
       headers: {
         "x-api-key": process.env.API_KEY,
@@ -37,6 +41,7 @@ router.post("/search", async (req, res) => {
           return word;
         }
       });
+      
       // Join the array of capitalized words into a single string
       item.name = capitalizedWords.join(" ");
       return item;
@@ -51,14 +56,18 @@ router.post("/search", async (req, res) => {
 // POST localhost:8000/cocktails/favorites POST favorited cocktail by user into db
 router.post("/favorites", async (req, res) => {
   try {
-    const user = await db.user.findByPk(res.locals.user.id);
-    const favorite = await db.cocktail.findOrCreate({
-      where: {
-        name: req.body.name,
-        ingredients: req.body.ingredients,
-        instructions: req.body.instructions,
-      },
-    });
+    if (req.cookies.userId) {
+      const user = await db.user.findByPk(res.locals.user.id)
+      const favorite = await db.cocktail.findOrCreate({
+        where: {
+          name: req.body.name,
+          ingredients: req.body.ingredients,
+          instructions: req.body.instructions,
+        },
+      })
+    } else {
+      res.redirect()
+    }
     res.redirect(req.get("referer"));
   } catch (err) {
     console.log(err);
@@ -124,7 +133,13 @@ router.delete("/favorites/:id", async (req, res) => {
       },
     });
     // console.log(deletefavorite);
-    res.redirect(req.get("referer"));
+    
+    if (cocktail.length > 0) {
+      res.redirect(req.get("referer"));
+    } else {
+      res.redirect('/users/profile.ejs')
+    }
+    
   } catch (err) {
     console.log(err);
   }

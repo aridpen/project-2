@@ -6,17 +6,6 @@
   <input type="hidden" name="instructions" value="<%= result.instructions %>" />
   <button type="submit" class="btn btn-warning">Favorite 🥃🍸</button>
 </form>
-<!-- <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    var favoriteButton = document.getElementById("favorite-button");
-    favoriteButton.addEventListener("click", function () {
-      // Find the parent element of the button (in this case, it's the form element)
-      var parent = this.parentElement;
-      // Remove the parent element from the page
-      parent.parentElement.removeChild(parent);
-    });
-  });
-</script> -->
 
 <ul>
   <%result.ingredients.forEach(ingredient=>{ %>

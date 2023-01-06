@@ -1,12 +1,23 @@
 <%- include('../partials/favorites.ejs', {user}) %> 
 
+<style>
+   .cards-container {
+    background-image: url('/img/bartop2.jpg');
+    background-size: contain;
+  }
+  .card {
+    margin: 2rem  2rem  2rem  2rem;
+    background-color: rgb(242, 242, 235);
+  }
 
+</style>
 
-
-
+<div class="cards-container">
 <% for (const favorite of favorites) { %>
+  <div class="card d-inline-block" style="width: 20rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= favorite.name %></h5>
 <h2>
-  <%= favorite.name %>
   <form action="/cocktails/favorites/<%=favorite.id%>/?_method=DELETE" method="POST">
     <button class="btn btn-warning" type="submit">Delete</button>
   </form>
@@ -29,12 +40,12 @@
     <input type="hidden" name="cocktailId" value="<%= favorite.id %>" />
     <input type="submit" value="Submit" />
   </form>
-   
+</div>
+</div>
 <%}%> 
-
-
-
-
-
+</div>
 
 <%-include('../partials/footer.ejs') %>
+
+
+
