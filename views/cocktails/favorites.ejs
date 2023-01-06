@@ -31,7 +31,7 @@
 <p>Instructions: <%=favorite.instructions%></p>
 <%favorite.comments.forEach(comment => {%> 
     
-  <p><%= comment.dataValues.comment%></p> 
+  <p><strong><%= comment.dataValues.comment%></strong></p> 
   
   <%})%> 
   <form method="post" action="/cocktails/favorites/comments">
