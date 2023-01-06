@@ -39,6 +39,7 @@ Use the search bar to genertate cocktail recipes by matching name or ingredient 
 - If I find a recipe that interests me, I would like to be able to save that recipe to my favorites for future use.
 - If I later decide I no longer want to keep a recipe in my favorites, I would like to be able to delete it.
 
+
 ## MVP
 
 - Using Express, EJS, Sequelize.
