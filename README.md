@@ -41,7 +41,7 @@ Use the search bar to genertate cocktail recipes by matching name or ingredient 
 
 ## MVP
 
-- Using
+- Using Express, EJS, Sequelize.
 - Connect an API and create a database containing users, drinks, and favorites?
 - Allow user to serach recipes by name or ingredients by using simple keywords
 - Allow user to sign in to have the option to save favorites
