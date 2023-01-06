@@ -118,18 +118,17 @@ router.get('/edit', (req, res) => {
     })
 })
 
-router.post('/edit', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
-        //look for user in the database
-        const userUpdate = await db.user.findByPk(res.locals.user.id)
-        //retrieve user info from the form
-        email = req.body.email
-        password = bcrypt.hashSync(req.body.password, 12)
-   //updated user creds gets saved to the db
-        await userUpdate.save()
+        //update user from db
+        const userUpdate = await db.user.update({
+            password: bcrypt.hashSync(req.body.password, 12) 
+        }, {
+            where: {
+            email: req.body.email
+            }
+        })
         res.redirect('/users/profile')
-        
-        
     } catch (err) {
         console.log(err)
         res.status(500).send('server error')

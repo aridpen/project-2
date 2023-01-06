@@ -95,20 +95,20 @@
           <div class="col-md">
           <div class="card bg-dark text-light">
             <div class="card-body text-center">
-              <div class="h1 mb-0" >
+              <div class="h1 mb-3" >
                
             </div>
-            <h3 class="card-title mb-0">Update Profile</h3>
+            <h3 class="card-title mb-3">Update Profile</h3>
               <p class="card-text"> 
                 <div class="h1 mb-3">
                 <img src="/img/edit2.jpg" style="width: 600px; height: 400px;">
               </div>
-                <form action="/users/edit" method="POST">
-                    <label for="email">New Email:</label>
-                    <input type="email" name="email" id="email">
+                <form action="/users/<%=user.id%>/?_method=Put" method="POST">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" required>
                     
                     <label for="password">New Password:</label>
-                    <input type="password" name="password" id="password">
+                    <input type="password" name="password" id="password" required>
                     
                     <button class="btn btn-warning" type="submit">Update Information</button>
                     </form>
