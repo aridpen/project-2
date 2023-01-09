@@ -19,13 +19,14 @@
   </head>
   <body> 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-      <div class="container">
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <div class="container-fluid">
         <img src="/img/neoncocktail.jpg" class="navbar-brand" style="width: 100px; height: 100px;" class="navbar-brand">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
         <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- made items inline -->
         <ul class="navbar-nav">
           <!-- show home wheather the user is logged in or not -->
@@ -63,11 +64,30 @@
           <% }%>
         </ul>
       </div>
+    </div>
     </nav>
+
+
+    <style>
+      .card-container {
+       background-image: url('/img/bartop2.jpg');
+       background-size: contain;
+     }
+
+     html { 
+  background: url('/img/bartop2.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+   
+   </style>
 
     <!-- SEARCH BAR -->
     <section class="bg-secondary text-light p-5">
-      <div class="container">
+      <div class="container html">
+
         <div class="d-md-flex justify-content-between align-items-center">
           <p class="lead my-10 ">
             <%-include('../partials/form.ejs') %> 
@@ -75,52 +95,6 @@
         
         </div>
       </div>
-    </section>
 
-    <!-- BOXES -->
-    <!-- <section class="p-5">
-      <div class="container">
-        <div class="row text-center g-4">
-          <div class="col-md">
-          <div class="card bg-dark text-light">
-            <div class="card-body text-center">
-              <div class="h1 mb-3" >
-                <img src="/img/search3.jpg" style="max-width: 100%">
-            </div>
-            <h3 class="card-title mb-3">Search</h3>
-              <p class="card-text"> Welcome back! If you're looking for a specific cocktail, try searching for key words such as the ingredients or the name of the cocktail you're interested in. Also, don't forget to check out your favorites. Cheers!         
-              
-                </p> -->
-                <!-- <a href="#" class="btn btn-warning">Search</a> -->
-            <!-- </div>    
-          </div>
-        </div>
-          <div class="col-md">
-            <div class="card bg-secondary text-light">
-              <div class="card-body text-center">
-                <div class="h1 mb-3" >
-                  <img src="/img/search4.jpg" style="max-width: 100%">
-              </div>
-              <h3 class="card-title mb-3">Comments</h3>
-                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni ex ea maxime eum voluptatibus ullam error velit, sapiente doloru
-                  </p>
-                  <a href="#" class="btn btn-warning">Comments</a>
-              </div>    
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="card bg-dark text-light">
-              <div class="card-body text-center">
-                <div class="h1 mb-3" >
-                  <img src="/img/search2.jpg" style="max-width: 100%">
-              </div>
-              <h3 class="card-title mb-3">Favorites</h3>
-                <p class="card-text">Hey there! If you're trying to find the cocktail recipe you saved earlier, click here to access your favorites page to see all cocktails saved in the past!
-                  </p>
-                  <a href="/cocktails/favorites" class="btn btn-warning">Favorites</a>
-              </div>    
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
+
+    </section>

@@ -4,7 +4,7 @@
   <input type="hidden" name="name" value="<%= result.name %>" />
   <input type="hidden" name="ingredients" value="<%= result.ingredients %>" />
   <input type="hidden" name="instructions" value="<%= result.instructions %>" />
-  <button type="submit" class="btn btn-warning">Favorite 🥃🍸</button>
+  <button type="submit" class="favorite-button btn btn-warning" data-cocktail-id="<%= result.id%>">Favorite 🥃🍸</button>
 </form>
 
 <ul>
@@ -15,4 +15,8 @@
 </ul>
 <p>Instructions: <%=result.instructions%></p>
 
-<%})%> <%- include('../partials/footer.ejs') %>
+<%})%>
+
+
+
+<%- include('../partials/footer.ejs') %>

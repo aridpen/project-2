@@ -104,12 +104,6 @@ router.get("/comments", (req, res) => {
 
 router.post("/favorites/comments", async (req, res) => {
   try {
-    // Validate the input
-    if (!req.body.comment || !req.body.cocktailId) {
-      // If any required fields are missing, return an error
-      res.status(400).send({ error: "Comment and cocktail ID are required." });
-      return;
-    }
 
     // Save the comment to the database
     const comment = await db.comment.create({
@@ -123,10 +117,12 @@ router.post("/favorites/comments", async (req, res) => {
   }
 });
 
+
+
 // DELETE localhost:8000/cocktails/favorites/:id delete a favorited cocktail by user
 router.delete("/favorites/:id", async (req, res) => {
   try {
-    console.log(req.params.id);
+   
     const favorite = await db.cocktail.destroy({
       where: {
         id: req.params.id,
@@ -134,7 +130,7 @@ router.delete("/favorites/:id", async (req, res) => {
     });
     // console.log(deletefavorite);
     
-    if (cocktail.length > 0) {
+    if (favorite) {
       res.redirect(req.get("referer"));
     } else {
       res.redirect('/users/profile.ejs')

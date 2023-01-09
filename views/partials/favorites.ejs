@@ -20,12 +20,12 @@
   <body> 
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-      <div class="container">
+      <div class="container-fluid">
         <img src="/img/neoncocktail.jpg" class="navbar-brand" style="width: 100px; height: 100px;" class="navbar-brand">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
         <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- made items inline -->
         <ul class="navbar-nav">
           <!-- show home wheather the user is logged in or not -->
@@ -64,16 +64,25 @@
       </div>
     </nav>
 
+
+    
+  
     <!-- SEARCH BAR -->
     <section class="bg-secondary text-light p-5">
       <div class="container">
         <div class="d-md-flex justify-content-between align-items-center">
           <p class="lead my-10 ">
-            Wicked Favorites
+            <h2>Wicked Favorites</h2>
             <%- include('../partials/form.ejs') %>
             </p>
         </div>
       </div>
     </section>
 
-    <!-- BOXES -->
+    <style>
+
+      h2{
+        font-size: 100px;
+        font-family: 'Great Vibes', sans-serif;
+      }
+      </style>
